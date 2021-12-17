@@ -2,6 +2,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using PowerUp.Mongo.Abstracao;
 using PowerUp.Mongo.Configracoes;
 using PowerUp.Mongo.Contextos;
+using PowerUp.Mongo.Repositorios;
 
 namespace PowerUp.Mongo.Modulos;
 
@@ -11,7 +12,7 @@ public static class Dependencias
     {
         servicos.AdicionarConfiguracao<ConfiguracaoMongo>(configuracoes);
         servicos.AddSingleton<IMongoDataBaseFabrica, MongoDataBaseFabrica>();
-
+        servicos.AddScoped<IPessoaRepositorio, PessoaRepositorio>();
         servicos.AddScoped(
             provider =>
             {
